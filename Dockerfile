@@ -16,11 +16,11 @@ RUN cd /home/PaddleOCR &&  pip3.7 install -r requirments.txt -i https://mirror.b
 
 RUN mkdir -p /home/PaddleOCR/inference
 
-ADD https://paddleocr.bj.bcebos.com/20-09-22/server/det/ch_ppocr_server_v1.1_det_infer.tar /home/PaddleOCR/inference
+ADD https://paddleocr.bj.bcebos.com/20-09-22/mobile/det/ch_ppocr_mobile_v1.1_det_infer.tar /home/PaddleOCR/inference
 RUN tar xf /home/PaddleOCR/inference/ch_ppocr_server_v1.1_det_infer.tar -C /home/PaddleOCR/inference
 
-ADD https://paddleocr.bj.bcebos.com/20-09-22/server/rec/ch_ppocr_server_v1.1_rec_infer.tar /home/PaddleOCR/inference
-RUN tar xf /home/PaddleOCR/inference/ch_ppocr_server_v1.1_rec_infer.tar -C /home/PaddleOCR/inference
+ADD https://paddleocr.bj.bcebos.com/20-09-22/mobile/rec/ch_ppocr_mobile_v1.1_rec_infer.tar /home/PaddleOCR/inference
+RUN tar xf /home/PaddleOCR/inference/ch_ppocr_mobile_v1.1_rec_infer.tar -C /home/PaddleOCR/inference
 
 ADD https://paddleocr.bj.bcebos.com/20-09-22/cls/ch_ppocr_mobile_v1.1_cls_infer.tar /home/PaddleOCR/inference
 RUN tar xf /home/PaddleOCR/inference/ch_ppocr_mobile_v1.1_cls_infer.tar -C /home/PaddleOCR/inference
@@ -29,4 +29,4 @@ RUN cd /home/PaddleOCR &&export PYTHONPATH=/home/PaddleOCR && hub install deploy
 EXPOSE 8866
 WORKDIR /home/PaddleOCR
 
-CMD ["/bin/bash","-c","export PYTHONPATH=/home/PaddleOCR &&  hub serving start -m ocr_system"]
+CMD ["/bin/bash","-c","export PYTHONPATH=/home/PaddleOCR &&  hub serving start --use_multiprocess true -m ocr_system"]
