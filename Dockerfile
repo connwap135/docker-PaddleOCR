@@ -10,8 +10,8 @@ RUN pip3.7 install paddlehub --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simp
 
 RUN mkdir -p /home && cd /home
 
-# RUN git clone https://gitee.com/paddlepaddle/PaddleOCR.git
-RUN git clone https://github.com/PaddlePaddle/PaddleOCR.git
+RUN git clone https://gitee.com/connwap135/PaddleOCR.git
+# RUN git clone https://github.com/PaddlePaddle/PaddleOCR.git
 
 RUN cd /home/PaddleOCR && pip3.7 install -r /home/PaddleOCR/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
